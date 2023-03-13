@@ -19,7 +19,8 @@ In order to set it up to build in your environment you need to tell CMake where 
 * Create a local.cmake file and set it in there
 * On Windows, set in cmake-gui (see below)
 
-By default, the shaders will be installed to build/dist. From there you can copy the files to the appropriate paths on your system. If you would like to install directly to a specific path you can set INSTALL_DIR as described for ARNOLD_ROOT above to install to ${INSTALL_DIR}/bin etc. Alternatively setting INSTALL_ROOT instead will install to ${INSTALL_ROOT}/${LENTIL_VERSION}/ai${ARNOLD_VERSION}
+By default, the shaders will be installed to build/dist. From there you can copy the files to the appropriate paths on your system. If you would like to install directly to a specific path you can set INSTALL_DIR as described for ARNOLD_ROOT above to install to `${INSTALL_DIR}/bin` etc.
+Alternatively setting INSTALL_ROOT instead will install to `${INSTALL_ROOT}/${LENTIL_VERSION}/ai${ARNOLD_VERSION}`.
 
 The following commands will build the project to the `/dist` folder:
 ```bash
