@@ -8,28 +8,29 @@ To get started compiling the Arnold plugin - which I will assume most of the peo
 
 ### Arnold plug-in compile instructions:
 
+The project uses cmake for compilation. The build setup is a forked version from the Cryptomatte project.
   
 Download the Arnold SDK from: https://arnoldrenderer.com/download/archive/ (under Arnold SDK). On my own machine, the environment variables look like this. Please modify for your needs/arnold version. Changing the Arnold Root version will change which Arnold version the plugin is compiled against.
 
-```bash
-    export LENTIL_ARNOLD_SDKS="/home/cactus/"
-    export LENTIL_PATH="/home/cactus/lentil/polynomial-optics"
-    export ARNOLD_ROOT="/home/cactus/Arnold-7.1.1.0-linux"
-    export ARNOLD_VERSION="7.1.1.0"
-    export PATH=$PATH:$LENTIL_PATH"/../Eigen/"
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$ARNOLD_ROOT/bin"
-```
+In order to set it up to build in your environment you need to tell CMake where Arnold API is installed. Specify ARNOLD_ROOT in one of the following ways:
+* Set ARNOLD_ROOT in your environment before running CMake
+* Pass ARNOLD_ROOT to cmake directly as in:
+  * `> cmake -DARNOLD_ROOT=<path> ..`
+* Create a local.cmake file and set it in there
+* On Windows, set in cmake-gui (see below)
 
-The project uses cmake for compilation. The build setup is a forked version from the Cryptomatte project.
+By default, the shaders will be installed to build/dist. From there you can copy the files to the appropriate paths on your system. If you would like to install directly to a specific path you can set INSTALL_DIR as described for ARNOLD_ROOT above to install to ${INSTALL_DIR}/bin etc. Alternatively setting INSTALL_ROOT instead will install to ${INSTALL_ROOT}/${LENTIL_VERSION}/ai${ARNOLD_VERSION}
+
+The following commands will build the project to the `/dist` folder:
 ```bash
     cd lentil
     cd pota
     mkdir build
     cd build
-    make install ..
+    cmake ..
+    make install
 ```
 
-This will build the project to the `/dist` folder.
 
   
 
